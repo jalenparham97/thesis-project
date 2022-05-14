@@ -105,7 +105,7 @@ export default function ListenPage() {
             leftIcon={<IconArrowLeft size={16} />}
             variant="default"
           >
-            Back to stories
+            Back to home
           </Button>
           <Select
             placeholder="Pick a voice"
@@ -136,7 +136,7 @@ export default function ListenPage() {
           <AudioPlayer
             // style={{ width: "300px" }}
             style={{ borderRadius: '4px', textAlign: 'center' }}
-            autoPlay
+            // autoPlay
             // layout="horizontal"
             src={musicTracks[trackIndex].src}
             onPlay={(e) => console.log('onPlay')}

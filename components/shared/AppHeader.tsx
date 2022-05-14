@@ -3,7 +3,7 @@ import { Box, Header, Title } from '@mantine/core';
 export default function AppHeader() {
   return (
     <Header
-      height={70}
+      height={50}
       p="md"
       fixed
       sx={(theme) => ({
@@ -13,7 +13,9 @@ export default function AppHeader() {
     >
       <Box className="flex justify-between items-center h-full">
         <Box className="flex items-center space-x-5">
-          <Title order={2}>Thesis App</Title>
+          <Title order={2} className="text-xl">
+            Affinity: Arizsia's 2022 Thesis Project
+          </Title>
         </Box>
         <Box className="flex items-center space-x-3"></Box>
       </Box>

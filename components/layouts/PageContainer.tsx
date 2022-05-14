@@ -12,7 +12,9 @@ export default function PageContainer({ children, header }: Props) {
       fixed
       header={header}
       styles={(theme) => ({
-        main: {},
+        main: {
+          paddingBottom: 100,
+        },
       })}
     >
       {children}
