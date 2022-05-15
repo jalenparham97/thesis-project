@@ -215,7 +215,10 @@ export default function ListenPage() {
           />
         </SimpleGrid>
 
-        <Box className="mt-8 divide-y divide-solid divide-gray-300">
+        <Box
+          className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
+          sx={{ height: '100%', overflowY: 'scroll' }}
+        >
           {isEmpty(voiceActors.filter(filterVoices))
             ? voiceActors.map((actor) => (
                 <Box className="py-3 flex items-center justify-between">
@@ -249,7 +252,7 @@ export default function ListenPage() {
               ))}
         </Box>
 
-        <Box className="py-4 px-6 absolute bottom-0 left-0 border-t border-solid border-gray-300 w-full space-x-4">
+        <Box className="py-4 px-6 absolute bottom-0 left-0 z-50 bg-white border-t border-solid border-gray-300 w-full space-x-4">
           <Button variant="default" onClick={clearFilters}>
             Clear filters
           </Button>
