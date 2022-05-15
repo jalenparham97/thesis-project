@@ -1,5 +1,6 @@
 export const voiceActors = [
   {
+    id: 1,
     name: 'Avery Evans',
     ethnicity: ['Black'],
     gender: 'Male',
@@ -8,6 +9,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 2,
     name: 'Brandon Foxworth',
     ethnicity: ['Black'],
     gender: 'Male',
@@ -16,6 +18,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 3,
     name: 'Cade Holbrook',
     ethnicity: ['White'],
     gender: 'Male',
@@ -24,6 +27,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 4,
     name: 'Felix Jose Rolon Colon',
     ethnicity: ['Puertorican'],
     gender: 'Male',
@@ -32,6 +36,7 @@ export const voiceActors = [
     languages: ['English', 'Spanish'],
   },
   {
+    id: 5,
     name: 'Aam Siddiqee',
     ethnicity: ['Indian', 'Pakistani'],
     gender: 'Female',
@@ -40,6 +45,7 @@ export const voiceActors = [
     languages: ['English', 'urdu'],
   },
   {
+    id: 6,
     name: 'Arizsia Staton',
     ethnicity: ['Black'],
     gender: 'Female',
@@ -48,6 +54,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 7,
     name: 'Chantrell Lewis',
     ethnicity: ['Black'],
     gender: 'Female',
@@ -56,6 +63,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 8,
     name: 'Chantrell Lewis',
     ethnicity: ['Black'],
     gender: 'Female',
@@ -64,6 +72,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 9,
     name: 'Leah Sampson',
     ethnicity: ['White'],
     gender: 'Female',
@@ -72,6 +81,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 10,
     name: 'Rhianna Heaster',
     ethnicity: ['White', 'Panamanian', 'Hispanic'],
     gender: 'Female',
@@ -80,6 +90,7 @@ export const voiceActors = [
     languages: ['English'],
   },
   {
+    id: 11,
     name: 'Feyintoluwa Ekisola',
     ethnicity: ['Black', 'Nigerian'],
     gender: 'Female',

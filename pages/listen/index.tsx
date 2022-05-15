@@ -10,8 +10,8 @@ import {
   Title,
   SimpleGrid,
   Text,
-  Select,
   ActionIcon,
+  NativeSelect,
 } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 import { isEmpty } from 'lodash';
@@ -37,13 +37,13 @@ const musicTracks = [
 export default function ListenPage() {
   const [opened, setOpened] = useState(false);
 
+  const [voiceFilter, setVoiceFilter] = useState({});
+
   const [gender, setGender] = useState('');
   const [sexOrientation, setSexOrientation] = useState('');
   const [ethnicity, setEthnicity] = useState('');
   const [regionality, setRegionality] = useState('');
   const [language, setLanguage] = useState('');
-
-  const [voices, setVoices] = useState(voiceActors);
 
   const [trackIndex, setTrackIndex] = useState(0);
 
@@ -61,11 +61,39 @@ export default function ListenPage() {
     );
   };
 
+  const handleSelectChange = (
+    event: React.ChangeEvent<HTMLSelectElement>,
+    setterFunction?: (val: string) => void
+  ) => {
+    const { name, value } = event.currentTarget;
+    setterFunction(value);
+    setVoiceFilter((prevFilter) => ({ ...prevFilter, [name]: value }));
+  };
+
+  const buildFilterQuery = (filter) => {
+    let query = {};
+    for (let keys in filter) {
+      if (filter[keys].constructor === String && filter[keys].length > 0) {
+        query[keys] = filter[keys];
+      }
+    }
+    return query;
+  };
+
+  console.log(buildFilterQuery(voiceFilter));
+
   const filterVoices = (actor: VoiceActor) => {
-    return (
-      actor.gender.toLowerCase() === gender.toLowerCase() ||
-      actor.ethnicity.includes(ethnicity)
-    );
+    const query = buildFilterQuery(voiceFilter);
+    for (let key in query) {
+      if (
+        actor[key] === undefined ||
+        actor[key] === '' ||
+        !query[key].includes(actor[key])
+      ) {
+        return false;
+      }
+    }
+    return true;
   };
 
   const clearFilters = () => {
@@ -74,7 +102,10 @@ export default function ListenPage() {
     setSexOrientation('');
     setRegionality('');
     setLanguage('');
+    setVoiceFilter({});
   };
+
+  const selectActor = () => {};
 
   return (
     <PageContainer header={<AppHeader />}>
@@ -144,26 +175,34 @@ export default function ListenPage() {
             { maxWidth: 'xs', cols: 2, spacing: 'sm' },
           ]}
         >
-          <Select
+          <NativeSelect
             placeholder="Gender"
+            name="gender"
             value={gender}
-            onChange={setGender}
+            onChange={(e) => handleSelectChange(e, setGender)}
             data={[
-              { value: 'male', label: 'Male' },
-              { value: 'female', label: 'Female' },
+              { value: '', label: 'All gender' },
+              { value: 'Male', label: 'Male' },
+              { value: 'Female', label: 'Female' },
             ]}
           />
-          <Select
+          <NativeSelect
             placeholder="Sex Orientation"
+            name="sexOrientation"
             value={sexOrientation}
-            onChange={setSexOrientation}
-            data={[{ value: 'queer', label: 'Queer' }]}
-          />
-          <Select
-            placeholder="Race / Ethnicity"
-            value={ethnicity}
-            onChange={setEthnicity}
+            onChange={(e) => handleSelectChange(e, setSexOrientation)}
             data={[
+              { value: '', label: 'All sex orientation' },
+              { value: 'queer', label: 'Queer' },
+            ]}
+          />
+          <NativeSelect
+            placeholder="Race / Ethnicity"
+            name="ethnicity"
+            value={ethnicity}
+            onChange={(e) => handleSelectChange(e, setEthnicity)}
+            data={[
+              { value: '', label: 'All ethnicity' },
               { value: 'Black', label: 'Black' },
               { value: 'White', label: 'White' },
               { value: 'Puertorican', label: 'Puertorican' },
@@ -173,11 +212,13 @@ export default function ListenPage() {
               { value: 'Nigerian', label: 'Nigerian' },
             ]}
           />
-          <Select
+          <NativeSelect
             placeholder="Regionality"
+            name="regionality"
             value={regionality}
-            onChange={setRegionality}
+            onChange={(e) => handleSelectChange(e, setRegionality)}
             data={[
+              { value: '', label: 'All regionality' },
               { value: 'Jackson, Mississippi', label: 'Jackson, Mississippi' },
               {
                 value: 'Midwest, Detroit, Michigan',
@@ -202,11 +243,13 @@ export default function ListenPage() {
               },
             ]}
           />
-          <Select
+          <NativeSelect
             placeholder="Language"
+            name="language"
             value={language}
-            onChange={setLanguage}
+            onChange={(e) => handleSelectChange(e, setLanguage)}
             data={[
+              { value: '', label: 'All languages' },
               { value: 'english', label: 'English' },
               { value: 'spanish', label: 'Spanish' },
               { value: 'urdu', label: 'Urdu' },
@@ -217,11 +260,14 @@ export default function ListenPage() {
 
         <Box
           className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
-          sx={{ height: '100%', overflowY: 'scroll' }}
+          sx={{ height: '100%' }}
         >
           {isEmpty(voiceActors.filter(filterVoices))
             ? voiceActors.map((actor) => (
-                <Box className="py-3 flex items-center justify-between">
+                <Box
+                  className="py-3 flex items-center justify-between"
+                  key={actor.id}
+                >
                   <Box>
                     <Text>{actor.name}</Text>
                   </Box>
@@ -236,7 +282,10 @@ export default function ListenPage() {
                 </Box>
               ))
             : voiceActors.filter(filterVoices).map((actor) => (
-                <Box className="py-3 flex items-center justify-between">
+                <Box
+                  className="py-3 flex items-center justify-between"
+                  key={actor.id}
+                >
                   <Box>
                     <Text>{actor.name}</Text>
                   </Box>

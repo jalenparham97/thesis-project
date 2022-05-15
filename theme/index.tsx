@@ -44,6 +44,9 @@ export function ThemeProvider({ children }) {
           Text: (theme) => ({
             dimmed: { color: theme.colorScheme === 'light' ? '' : '' },
           }),
+          NativeSelect: (theme) => ({
+            input: { cursor: 'pointer' },
+          }),
         }}
       >
         {children}
