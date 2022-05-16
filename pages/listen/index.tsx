@@ -80,21 +80,23 @@ export default function ListenPage() {
     return query;
   };
 
-  console.log(buildFilterQuery(voiceFilter));
-
   const filterVoices = (actor: VoiceActor) => {
     const query = buildFilterQuery(voiceFilter);
     for (let key in query) {
       if (
         actor[key] === undefined ||
         actor[key] === '' ||
-        !query[key].includes(actor[key])
+        !actor[key].includes(query[key])
       ) {
         return false;
       }
     }
     return true;
   };
+
+  console.log({ includes: voiceActors[3].languages.includes('Spanish') });
+
+  console.log({ voices: voiceActors.filter(filterVoices) });
 
   const clearFilters = () => {
     setGender('');
@@ -176,7 +178,8 @@ export default function ListenPage() {
           ]}
         >
           <NativeSelect
-            placeholder="Gender"
+            size="xs"
+            placeholder="All Gender"
             name="gender"
             value={gender}
             onChange={(e) => handleSelectChange(e, setGender)}
@@ -187,7 +190,8 @@ export default function ListenPage() {
             ]}
           />
           <NativeSelect
-            placeholder="Sex Orientation"
+            size="xs"
+            placeholder="All Sex Orientation"
             name="sexOrientation"
             value={sexOrientation}
             onChange={(e) => handleSelectChange(e, setSexOrientation)}
@@ -197,7 +201,8 @@ export default function ListenPage() {
             ]}
           />
           <NativeSelect
-            placeholder="Race / Ethnicity"
+            size="xs"
+            placeholder="All Race / Ethnicity"
             name="ethnicity"
             value={ethnicity}
             onChange={(e) => handleSelectChange(e, setEthnicity)}
@@ -207,13 +212,15 @@ export default function ListenPage() {
               { value: 'White', label: 'White' },
               { value: 'Puertorican', label: 'Puertorican' },
               { value: 'Pakistani', label: 'Pakistani' },
+              { value: 'Panamanian', label: 'Panamanian' },
               { value: 'Indian', label: 'Indian' },
               { value: 'Hispanic', label: 'Hispanic' },
               { value: 'Nigerian', label: 'Nigerian' },
             ]}
           />
           <NativeSelect
-            placeholder="Regionality"
+            size="xs"
+            placeholder="All Regionality"
             name="regionality"
             value={regionality}
             onChange={(e) => handleSelectChange(e, setRegionality)}
@@ -244,16 +251,17 @@ export default function ListenPage() {
             ]}
           />
           <NativeSelect
-            placeholder="Language"
-            name="language"
+            size="xs"
+            placeholder="All Languages"
+            name="languages"
             value={language}
             onChange={(e) => handleSelectChange(e, setLanguage)}
             data={[
               { value: '', label: 'All languages' },
-              { value: 'english', label: 'English' },
-              { value: 'spanish', label: 'Spanish' },
-              { value: 'urdu', label: 'Urdu' },
-              { value: 'yoruba', label: 'Yoruba' },
+              { value: 'English', label: 'English' },
+              { value: 'Spanish', label: 'Spanish' },
+              { value: 'Urdu', label: 'Urdu' },
+              { value: 'Yoruba', label: 'Yoruba' },
             ]}
           />
         </SimpleGrid>
