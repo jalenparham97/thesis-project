@@ -211,109 +211,113 @@ export default function ListenPage() {
         position="right"
         classNames={{
           root: 'relative',
+          drawer: 'overflow-y-scroll',
         }}
       >
-        <SimpleGrid
-          cols={5}
-          spacing="lg"
-          breakpoints={[
-            { maxWidth: 'md', cols: 3, spacing: 'md' },
-            { maxWidth: 'sm', cols: 2, spacing: 'sm' },
-            { maxWidth: 'xs', cols: 2, spacing: 'sm' },
-          ]}
-        >
-          <NativeSelect
-            size="xs"
-            placeholder="All Gender"
-            name="gender"
-            value={gender}
-            onChange={(e) => handleSelectChange(e, setGender)}
-            data={[
-              { value: '', label: 'All gender' },
-              { value: 'Male', label: 'Male' },
-              { value: 'Female', label: 'Female' },
+        <ScrollArea type="scroll">
+          <SimpleGrid
+            cols={5}
+            spacing="lg"
+            breakpoints={[
+              { maxWidth: 'md', cols: 3, spacing: 'md' },
+              { maxWidth: 'sm', cols: 2, spacing: 'sm' },
+              { maxWidth: 'xs', cols: 2, spacing: 'sm' },
             ]}
-          />
-          <NativeSelect
-            size="xs"
-            placeholder="All Sex Orientation"
-            name="sexOrientation"
-            value={sexOrientation}
-            onChange={(e) => handleSelectChange(e, setSexOrientation)}
-            data={[
-              { value: '', label: 'All sex orientation' },
-              { value: 'queer', label: 'Queer' },
-            ]}
-          />
-          <NativeSelect
-            size="xs"
-            placeholder="All Race / Ethnicity"
-            name="ethnicity"
-            value={ethnicity}
-            onChange={(e) => handleSelectChange(e, setEthnicity)}
-            data={[
-              { value: '', label: 'All ethnicity' },
-              { value: 'Black', label: 'Black' },
-              { value: 'White', label: 'White' },
-              { value: 'Puertorican', label: 'Puertorican' },
-              { value: 'Pakistani', label: 'Pakistani' },
-              { value: 'Panamanian', label: 'Panamanian' },
-              { value: 'Indian', label: 'Indian' },
-              { value: 'Hispanic', label: 'Hispanic' },
-              { value: 'Nigerian', label: 'Nigerian' },
-            ]}
-          />
-          <NativeSelect
-            size="xs"
-            placeholder="All Regionality"
-            name="regionality"
-            value={regionality}
-            onChange={(e) => handleSelectChange(e, setRegionality)}
-            data={[
-              { value: '', label: 'All regionality' },
-              { value: 'Jackson, Mississippi', label: 'Jackson, Mississippi' },
-              {
-                value: 'Midwest, Detroit, Michigan',
-                label: 'Midwest, Detroit, Michigan',
-              },
-              {
-                value: 'West Coast - Oregon and Washington',
-                label: 'West Coast - Oregon and Washington',
-              },
-              { value: 'California', label: 'California' },
-              {
-                value: 'Midwest, Clevland, Ohio',
-                label: 'Midwest, Clevland, Ohio',
-              },
-              {
-                value: 'West Coast - California and Washington',
-                label: 'West Coast - California and Washington',
-              },
-              {
-                value: 'Abeokuta Nigeria and Minnesota',
-                label: 'Abeokuta Nigeria and Minnesota',
-              },
-            ]}
-          />
-          <NativeSelect
-            size="xs"
-            placeholder="All Languages"
-            name="languages"
-            value={language}
-            onChange={(e) => handleSelectChange(e, setLanguage)}
-            data={[
-              { value: '', label: 'All languages' },
-              { value: 'English', label: 'English' },
-              { value: 'Spanish', label: 'Spanish' },
-              { value: 'Urdu', label: 'Urdu' },
-              { value: 'Yoruba', label: 'Yoruba' },
-            ]}
-          />
-        </SimpleGrid>
+          >
+            <NativeSelect
+              size="xs"
+              placeholder="All Gender"
+              name="gender"
+              value={gender}
+              onChange={(e) => handleSelectChange(e, setGender)}
+              data={[
+                { value: '', label: 'All gender' },
+                { value: 'Male', label: 'Male' },
+                { value: 'Female', label: 'Female' },
+              ]}
+            />
+            <NativeSelect
+              size="xs"
+              placeholder="All Sex Orientation"
+              name="sexOrientation"
+              value={sexOrientation}
+              onChange={(e) => handleSelectChange(e, setSexOrientation)}
+              data={[
+                { value: '', label: 'All sex orientation' },
+                { value: 'queer', label: 'Queer' },
+              ]}
+            />
+            <NativeSelect
+              size="xs"
+              placeholder="All Race / Ethnicity"
+              name="ethnicity"
+              value={ethnicity}
+              onChange={(e) => handleSelectChange(e, setEthnicity)}
+              data={[
+                { value: '', label: 'All ethnicity' },
+                { value: 'Black', label: 'Black' },
+                { value: 'White', label: 'White' },
+                { value: 'Puertorican', label: 'Puertorican' },
+                { value: 'Pakistani', label: 'Pakistani' },
+                { value: 'Panamanian', label: 'Panamanian' },
+                { value: 'Indian', label: 'Indian' },
+                { value: 'Hispanic', label: 'Hispanic' },
+                { value: 'Nigerian', label: 'Nigerian' },
+              ]}
+            />
+            <NativeSelect
+              size="xs"
+              placeholder="All Regionality"
+              name="regionality"
+              value={regionality}
+              onChange={(e) => handleSelectChange(e, setRegionality)}
+              data={[
+                { value: '', label: 'All regionality' },
+                {
+                  value: 'Jackson, Mississippi',
+                  label: 'Jackson, Mississippi',
+                },
+                {
+                  value: 'Midwest, Detroit, Michigan',
+                  label: 'Midwest, Detroit, Michigan',
+                },
+                {
+                  value: 'West Coast - Oregon and Washington',
+                  label: 'West Coast - Oregon and Washington',
+                },
+                { value: 'California', label: 'California' },
+                {
+                  value: 'Midwest, Clevland, Ohio',
+                  label: 'Midwest, Clevland, Ohio',
+                },
+                {
+                  value: 'West Coast - California and Washington',
+                  label: 'West Coast - California and Washington',
+                },
+                {
+                  value: 'Abeokuta Nigeria and Minnesota',
+                  label: 'Abeokuta Nigeria and Minnesota',
+                },
+              ]}
+            />
+            <NativeSelect
+              size="xs"
+              placeholder="All Languages"
+              name="languages"
+              value={language}
+              onChange={(e) => handleSelectChange(e, setLanguage)}
+              data={[
+                { value: '', label: 'All languages' },
+                { value: 'English', label: 'English' },
+                { value: 'Spanish', label: 'Spanish' },
+                { value: 'Urdu', label: 'Urdu' },
+                { value: 'Yoruba', label: 'Yoruba' },
+              ]}
+            />
+          </SimpleGrid>
 
-        <ScrollArea className="h-[620px] md:h-full" type="scroll">
           <Box
-            className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
+            className="pt-4 divide-y divide-solid divide-gray-300"
             sx={{ height: '100%' }}
           >
             {voiceActors.filter(filterVoices).map((actor) => (
@@ -363,7 +367,7 @@ export default function ListenPage() {
           </Box>
         </ScrollArea>
 
-        <Box className="py-4 px-6 absolute bottom-0 left-0 z-50 bg-white border-t border-solid border-gray-300 w-full space-x-4">
+        <Box className="pt-4 bg-white border-t border-solid border-gray-300 space-x-4">
           <Button variant="default" onClick={clearFilters}>
             Clear filters
           </Button>
