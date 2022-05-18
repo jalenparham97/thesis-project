@@ -74,7 +74,9 @@ const IndexPage = () => (
                 and regionality. Each voiceover artist has individualized the
                 text from the presence body scan. This includes subtle language
                 shifts, and or vernacular that aligns with the identity of the
-                voiceover artist.
+                voiceover artist. Please note that the language inclusion in
+                this phase is a mixture of the English and the other filtered
+                language, we have not integrated full translations yet.
               </Text>
               <Text className="leading-loose">
                 There is a required pre and post listening experience survey for
@@ -106,9 +108,11 @@ const IndexPage = () => (
               expand the categories of listening experiences, such as:
               medication exercises, affirmations, and short stories. We will
               also be including more voices that vary in identity markers, and
-              language to our collection to widen your options. During this
-              phase we will continue to use a web format to focus on collecting
-              user responses and the efficacy of our approach.
+              language to our collection to widen your options, and our
+              filtering functions will be more advanced to accommodate these
+              additions. During this phase we will continue to use a web format
+              to focus on collecting user responses and the efficacy of our
+              approach.
             </Text>
           </Box>
           <Box className="space-y-2">

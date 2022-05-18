@@ -5,7 +5,7 @@ export const voiceActors = [
     ethnicity: 'Black',
     gender: 'Male',
     sexOrientation: '',
-    regionality: 'Jackson, Mississippi',
+    regionality: 'US Southern',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FAvery%20Evans%20Body%20Scan%20Audio%20Edited.mp3?alt=media&token=35f83012-555c-4697-85cb-111a87cfa7e8',
@@ -22,7 +22,7 @@ export const voiceActors = [
     ethnicity: 'Black',
     gender: 'Male',
     sexOrientation: 'queer',
-    regionality: 'Midwest, Detroit, Michigan',
+    regionality: 'Midwest',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FBrandon%20Foxworth%20Body%20Scan%20Audio%20EDITED.mp3?alt=media&token=696498d6-f834-4434-9333-8961144f4cd1',
@@ -39,7 +39,7 @@ export const voiceActors = [
     ethnicity: 'White',
     gender: 'Male',
     sexOrientation: 'queer',
-    regionality: 'West Coast - Oregon and Washington',
+    regionality: 'West Coast',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FCade%20Holbrook%20Body%20Scan%20Audio%20EDITED.mp3?alt=media&token=4255f5ee-2cc1-4d84-aa59-f7acd1fc4d5e',
@@ -73,7 +73,7 @@ export const voiceActors = [
     ethnicity: 'Indian, Pakistani',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'California',
+    regionality: 'West Coast',
     languages: 'English, Urdu',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FAnam%20S.%20Body%20Scan%20Audio%20EDITED%20FEMALE.mp3?alt=media&token=79287c17-dae0-4136-b53e-745c8c7ebe97',
@@ -90,7 +90,7 @@ export const voiceActors = [
     ethnicity: 'Black',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'Midwest, Saginaw, MI',
+    regionality: 'Midwest',
     languages: 'English',
     audio:
       "https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FArizsia's%20Body%20Scan%20Audio%20Edited%20FEMALE.mp3?alt=media&token=3e32b116-a9dd-4224-b2f2-cb558bfa0888",
@@ -107,7 +107,7 @@ export const voiceActors = [
     ethnicity: 'Black',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'Midwest, Clevland, Ohio',
+    regionality: 'Midwest',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FChantrell%20Lewis%20Body%20Scan%20Audio%20EDITED%20FEMALE.mp3?alt=media&token=1f6cb84d-a342-4ad3-86b3-2bc608af52cc',
@@ -124,7 +124,7 @@ export const voiceActors = [
     ethnicity: 'White',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'West Coast - California and Washington',
+    regionality: 'West Coast',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FLeah%20Sampson%20Body%20Scan%20Audio%20Edited%20FEMALE.mp3?alt=media&token=a039b67b-709c-4446-830b-ccc3f5c2d30e',
@@ -141,7 +141,7 @@ export const voiceActors = [
     ethnicity: 'White, Panamanian, Hispanic',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'Southern California',
+    regionality: 'West Coast',
     languages: 'English',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FRhianna%20Heaster%20Body%20Scan%20Audio%20Edited%20FEMALE.mp3?alt=media&token=0f5d8c08-e4ea-438b-aa7b-e554eca20407',
@@ -158,7 +158,7 @@ export const voiceActors = [
     ethnicity: 'Black, Nigerian',
     gender: 'Female',
     sexOrientation: '',
-    regionality: 'Abeokuta Nigeria and Minnesota',
+    regionality: 'Midwest, Nigerian',
     languages: 'English, Yoruba',
     audio:
       'https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/audio%2FFeyintoluwa%20Body%20Scan%20Audio%20Edited%20FEMALE.mp3?alt=media&token=3530ae70-acc2-4361-ba57-7545b4e39a5b',

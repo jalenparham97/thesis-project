@@ -267,29 +267,20 @@ export default function ListenPage() {
               data={[
                 { value: '', label: 'All regionality' },
                 {
-                  value: 'Jackson, Mississippi',
-                  label: 'Jackson, Mississippi',
+                  value: 'US Southern',
+                  label: 'US Southern',
                 },
                 {
-                  value: 'Midwest, Detroit, Michigan',
-                  label: 'Midwest, Detroit, Michigan',
+                  value: 'Midwest',
+                  label: 'Midwest',
                 },
                 {
-                  value: 'West Coast - Oregon and Washington',
-                  label: 'West Coast - Oregon and Washington',
-                },
-                { value: 'California', label: 'California' },
-                {
-                  value: 'Midwest, Clevland, Ohio',
-                  label: 'Midwest, Clevland, Ohio',
+                  value: 'Puerto Rico',
+                  label: 'Puerto Rico',
                 },
                 {
-                  value: 'West Coast - California and Washington',
-                  label: 'West Coast - California and Washington',
-                },
-                {
-                  value: 'Abeokuta Nigeria and Minnesota',
-                  label: 'Abeokuta Nigeria and Minnesota',
+                  value: 'Nigerian',
+                  label: 'Nigerian',
                 },
               ]}
             />
