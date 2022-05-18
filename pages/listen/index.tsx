@@ -1,24 +1,20 @@
 import PageContainer from '@/components/layouts/PageContainer';
-import AppHeader from '@/components/shared/AppHeader';
 import {
   Box,
   Button,
   Container,
   Drawer,
   Group,
-  Image,
   Title,
   SimpleGrid,
   Text,
   ActionIcon,
   NativeSelect,
   Avatar,
-  Center,
-  Modal,
+  ScrollArea,
 } from '@mantine/core';
 import { NextLink } from '@mantine/next';
-import { isEmpty } from 'lodash';
-import { IconArrowLeft, IconPlayerPlay } from '@tabler/icons';
+import { IconArrowLeft } from '@tabler/icons';
 import { useState } from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -315,54 +311,57 @@ export default function ListenPage() {
           />
         </SimpleGrid>
 
-        <Box
-          className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
-          sx={{ height: '100%' }}
-        >
-          {voiceActors.filter(filterVoices).map((actor) => (
-            <Box
-              className="py-3 flex items-center justify-between"
-              key={actor.id}
-            >
-              <Box className="flex items-center space-x-2">
-                <Avatar src={actor.image} alt="it's me" />
-                <Text className="hidden md:block">{actor.name}</Text>
-              </Box>
-              <Box className="flex items-center space-x-2">
-                <Button
-                  size="xs"
-                  variant="default"
-                  onClick={() => openModal(actor)}
-                >
-                  Meet the voice artist
-                </Button>
-                {selectedActor?.name !== actor.name ? (
+        <ScrollArea className="h-[620px] md:h-full" type="scroll">
+          <Box
+            className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
+            sx={{ height: '100%' }}
+          >
+            {voiceActors.filter(filterVoices).map((actor) => (
+              <Box
+                className="py-3 flex items-center justify-between"
+                key={actor.id}
+              >
+                <Box className="flex items-center space-x-2">
+                  <Avatar src={actor.image} alt="it's me" />
+                  <Text className="hidden md:block">{actor.name}</Text>
+                </Box>
+
+                <Box className="flex items-center space-x-2">
                   <Button
+                    size="xs"
                     variant="default"
-                    size="xs"
-                    onClick={() => selectActor(actor)}
-                    className="w-32"
+                    onClick={() => openModal(actor)}
                   >
-                    Select voice
+                    Meet the voice artist
                   </Button>
-                ) : (
-                  <Button
-                    variant="outline"
-                    size="xs"
-                    className="cursor-default w-32"
-                  >
-                    Selected voice
-                  </Button>
-                )}
+                  {selectedActor?.name !== actor.name ? (
+                    <Button
+                      variant="default"
+                      size="xs"
+                      onClick={() => selectActor(actor)}
+                      className="w-32"
+                    >
+                      Select voice
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      size="xs"
+                      className="cursor-default w-32"
+                    >
+                      Selected voice
+                    </Button>
+                  )}
+                </Box>
+                <IntroModal
+                  opened={modalOpened}
+                  onClose={() => setModalOpened(false)}
+                  actor={selectedIntroActor}
+                />
               </Box>
-              <IntroModal
-                opened={modalOpened}
-                onClose={() => setModalOpened(false)}
-                actor={selectedIntroActor}
-              />
-            </Box>
-          ))}
-        </Box>
+            ))}
+          </Box>
+        </ScrollArea>
 
         <Box className="py-4 px-6 absolute bottom-0 left-0 z-50 bg-white border-t border-solid border-gray-300 w-full space-x-4">
           <Button variant="default" onClick={clearFilters}>
