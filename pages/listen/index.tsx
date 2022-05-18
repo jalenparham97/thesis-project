@@ -25,17 +25,6 @@ import { useIsMobile } from '@/hooks/useIsMobile';
 import IntroModal from '@/components/shared/IntroModal';
 import ListenPageHeader from '@/components/shared/ListenPageHeader';
 
-const musicTracks = [
-  {
-    name: 'Memories',
-    src: 'https://www.bensound.com/bensound-music/bensound-memories.mp3',
-  },
-  {
-    name: 'Creative Minds',
-    src: 'https://www.bensound.com/bensound-music/bensound-creativeminds.mp3',
-  },
-];
-
 export default function ListenPage() {
   const isMobile = useIsMobile();
   const [opened, setOpened] = useState(false);
@@ -51,8 +40,6 @@ export default function ListenPage() {
   const [ethnicity, setEthnicity] = useState('');
   const [regionality, setRegionality] = useState('');
   const [language, setLanguage] = useState('');
-
-  const [trackIndex, setTrackIndex] = useState(0);
 
   const handleClose = () => setOpened(false);
 
