@@ -271,6 +271,10 @@ export default function ListenPage() {
                   label: 'US Southern',
                 },
                 {
+                  value: 'West Coast',
+                  label: 'West Coast',
+                },
+                {
                   value: 'Midwest',
                   label: 'Midwest',
                 },
