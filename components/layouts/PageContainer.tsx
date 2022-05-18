@@ -13,7 +13,7 @@ export default function PageContainer({ children, header }: Props) {
       header={header}
       styles={(theme) => ({
         main: {
-          paddingBottom: 100,
+          paddingBottom: 50,
         },
       })}
     >

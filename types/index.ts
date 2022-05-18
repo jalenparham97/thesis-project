@@ -5,4 +5,8 @@ export type VoiceActor = {
   sexOrientation: string;
   regionality: string;
   languages: string;
+  audio: string;
+  musicAudio: string;
+  image: string;
+  introAudio: string;
 };

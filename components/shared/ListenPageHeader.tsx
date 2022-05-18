@@ -1,6 +1,6 @@
-import { Box, Header, Title } from '@mantine/core';
+import { Box, Button, Header, Title } from '@mantine/core';
 
-export default function AppHeader() {
+export default function ListenPageHeader() {
   return (
     <Header
       height={60}
@@ -22,7 +22,17 @@ export default function AppHeader() {
             </span>
           </Title>
         </Box>
-        <Box className="flex items-center space-x-3"></Box>
+        <Box className="flex items-center space-x-3">
+          <Button
+            variant="default"
+            component="a"
+            href="https://forms.gle/Da8aYZC5WEyK48886"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Take me to the post survey
+          </Button>
+        </Box>
       </Box>
     </Header>
   );

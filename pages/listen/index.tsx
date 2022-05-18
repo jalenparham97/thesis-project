@@ -12,6 +12,9 @@ import {
   Text,
   ActionIcon,
   NativeSelect,
+  Avatar,
+  Center,
+  Modal,
 } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 import { isEmpty } from 'lodash';
@@ -22,6 +25,9 @@ import 'react-h5-audio-player/lib/styles.css';
 
 import { voiceActors } from '@/data';
 import { VoiceActor } from '@/types';
+import { useIsMobile } from '@/hooks/useIsMobile';
+import IntroModal from '@/components/shared/IntroModal';
+import ListenPageHeader from '@/components/shared/ListenPageHeader';
 
 const musicTracks = [
   {
@@ -35,9 +41,14 @@ const musicTracks = [
 ];
 
 export default function ListenPage() {
+  const isMobile = useIsMobile();
   const [opened, setOpened] = useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
 
   const [voiceFilter, setVoiceFilter] = useState({});
+  const [selectedActor, setSelectedActor] = useState<VoiceActor>();
+  const [selectedIntroActor, setSelectedIntroActor] = useState<VoiceActor>();
+  const [musicPreference, setMusicPreference] = useState('no music');
 
   const [gender, setGender] = useState('');
   const [sexOrientation, setSexOrientation] = useState('');
@@ -94,10 +105,6 @@ export default function ListenPage() {
     return true;
   };
 
-  console.log({ includes: voiceActors[3].languages.includes('Spanish') });
-
-  console.log({ voices: voiceActors.filter(filterVoices) });
-
   const clearFilters = () => {
     setGender('');
     setEthnicity('');
@@ -107,54 +114,96 @@ export default function ListenPage() {
     setVoiceFilter({});
   };
 
-  const selectActor = () => {};
+  const selectActor = (actor: VoiceActor) => {
+    setSelectedActor(actor);
+    console.log(actor);
+  };
+
+  const openModal = (actor: VoiceActor) => {
+    setSelectedIntroActor(actor);
+    setModalOpened(true);
+  };
 
   return (
-    <PageContainer header={<AppHeader />}>
+    <PageContainer header={<ListenPageHeader />}>
       <Container size="xl">
         <Group position="apart">
-          <Button
-            component={NextLink}
-            href="/"
-            leftIcon={<IconArrowLeft size={16} />}
-            variant="default"
-          >
-            Back to home
-          </Button>
-          <Button variant="default" onClick={() => setOpened(true)}>
-            Select a voice
-          </Button>
+          {isMobile ? (
+            <ActionIcon variant="default" component={NextLink} href="/">
+              <IconArrowLeft size={16} />
+            </ActionIcon>
+          ) : (
+            <Button
+              component={NextLink}
+              href="/"
+              leftIcon={<IconArrowLeft size={16} />}
+              variant="default"
+            >
+              Back to home
+            </Button>
+          )}
+          <Box className="flex items-center space-x-2">
+            <NativeSelect
+              placeholder="All Languages"
+              name="languages"
+              value={musicPreference}
+              onChange={(e) => setMusicPreference(e.currentTarget.value)}
+              data={[
+                { value: 'no music', label: 'Without music' },
+                { value: 'music', label: 'With music' },
+              ]}
+            />
+            <Button variant="default" onClick={() => setOpened(true)}>
+              Select a voice
+            </Button>
+          </Box>
         </Group>
       </Container>
       <Container>
-        <Box className="space-y-10 mt-10">
-          <Title className="text-center" order={1}>
-            PRESENCE BODY SCAN
-          </Title>
-          <Box
-            style={{ maxWidth: 600, marginLeft: 'auto', marginRight: 'auto' }}
-          >
-            <Image
-              radius="md"
-              src="https://images.unsplash.com/photo-1511216335778-7cb8f49fa7a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-              alt="Random unsplash image"
+        {selectedActor && (
+          <Box className="space-y-10 mt-10">
+            <Title className="text-center" order={1}>
+              PRESENCE BODY SCAN
+            </Title>
+            <Box
+              style={{ maxWidth: 550, marginLeft: 'auto', marginRight: 'auto' }}
+            >
+              <img
+                src={selectedActor?.image || ''}
+                alt="Random unsplash image"
+                className="aspect-square h-[500px] w-full rounded"
+              />
+            </Box>
+            <AudioPlayer
+              style={{ borderRadius: '4px', textAlign: 'center' }}
+              autoPlay={false}
+              src={
+                musicPreference === 'no music'
+                  ? selectedActor?.audio
+                  : selectedActor.musicAudio
+              }
+              onPlay={(e) => console.log('onPlay')}
+              showSkipControls={false}
+              showJumpControls={false}
+              autoPlayAfterSrcChange={false}
+              header={`Voice over by: ${selectedActor?.name}`}
             />
           </Box>
-          <AudioPlayer
-            style={{ borderRadius: '4px', textAlign: 'center' }}
-            // autoPlay
-            // layout="horizontal"
-            src={musicTracks[trackIndex].src}
-            onPlay={(e) => console.log('onPlay')}
-            showSkipControls={true}
-            showJumpControls={false}
-            header={`Now playing: PRESENCE BODY SCAN`}
-            // footer="All music from: www.bensound.com"
-            onClickPrevious={handleClickPrevious}
-            onClickNext={handleClickNext}
-            onEnded={handleClickNext}
-          />
-        </Box>
+        )}
+
+        {!selectedActor && (
+          <Box className="text-center space-y-4 mt-[200px]">
+            <Title order={2}>
+              Welcome to the Affinity Voice listening experiance
+            </Title>
+            <Text>
+              To start listening press the select a voice button to begin.
+            </Text>
+            <Button variant="default" onClick={() => setOpened(true)}>
+              Select a voice
+            </Button>
+          </Box>
+        )}
       </Container>
 
       <Drawer
@@ -270,43 +319,49 @@ export default function ListenPage() {
           className="pt-4 pb-10 divide-y divide-solid divide-gray-300"
           sx={{ height: '100%' }}
         >
-          {isEmpty(voiceActors.filter(filterVoices))
-            ? voiceActors.map((actor) => (
-                <Box
-                  className="py-3 flex items-center justify-between"
-                  key={actor.id}
+          {voiceActors.filter(filterVoices).map((actor) => (
+            <Box
+              className="py-3 flex items-center justify-between"
+              key={actor.id}
+            >
+              <Box className="flex items-center space-x-2">
+                <Avatar src={actor.image} alt="it's me" />
+                <Text className="hidden md:block">{actor.name}</Text>
+              </Box>
+              <Box className="flex items-center space-x-2">
+                <Button
+                  size="xs"
+                  variant="default"
+                  onClick={() => openModal(actor)}
                 >
-                  <Box>
-                    <Text>{actor.name}</Text>
-                  </Box>
-                  <Box className="flex items-center space-x-2">
-                    <ActionIcon variant="default">
-                      <IconPlayerPlay size={16} />
-                    </ActionIcon>
-                    <Button variant="default" size="xs">
-                      Select voice
-                    </Button>
-                  </Box>
-                </Box>
-              ))
-            : voiceActors.filter(filterVoices).map((actor) => (
-                <Box
-                  className="py-3 flex items-center justify-between"
-                  key={actor.id}
-                >
-                  <Box>
-                    <Text>{actor.name}</Text>
-                  </Box>
-                  <Box className="flex items-center space-x-2">
-                    <ActionIcon variant="default">
-                      <IconPlayerPlay size={16} />
-                    </ActionIcon>
-                    <Button variant="default" size="xs">
-                      Select voice
-                    </Button>
-                  </Box>
-                </Box>
-              ))}
+                  Meet the voice artist
+                </Button>
+                {selectedActor?.name !== actor.name ? (
+                  <Button
+                    variant="default"
+                    size="xs"
+                    onClick={() => selectActor(actor)}
+                    className="w-32"
+                  >
+                    Select voice
+                  </Button>
+                ) : (
+                  <Button
+                    variant="outline"
+                    size="xs"
+                    className="cursor-default w-32"
+                  >
+                    Selected voice
+                  </Button>
+                )}
+              </Box>
+              <IntroModal
+                opened={modalOpened}
+                onClose={() => setModalOpened(false)}
+                actor={selectedIntroActor}
+              />
+            </Box>
+          ))}
         </Box>
 
         <Box className="py-4 px-6 absolute bottom-0 left-0 z-50 bg-white border-t border-solid border-gray-300 w-full space-x-4">
