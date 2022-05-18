@@ -56,16 +56,9 @@ export default function ListenPage() {
 
   const handleClose = () => setOpened(false);
 
-  const handleClickPrevious = () => {
-    setTrackIndex((currentTrack) =>
-      currentTrack === 0 ? musicTracks.length - 1 : currentTrack - 1
-    );
-  };
-
-  const handleClickNext = () => {
-    setTrackIndex((currentTrack) =>
-      currentTrack < musicTracks.length - 1 ? currentTrack + 1 : 0
-    );
+  const handleSelectVoice = (actor) => {
+    setSelectedActor(actor);
+    setOpened(false);
   };
 
   const handleSelectChange = (
@@ -150,7 +143,7 @@ export default function ListenPage() {
               ]}
             />
             <Button variant="default" onClick={() => setOpened(true)}>
-              Select a voice
+              {selectedActor ? 'Change voice' : 'Select a voice'}
             </Button>
           </Box>
         </Group>
@@ -342,7 +335,7 @@ export default function ListenPage() {
                     <Button
                       variant="default"
                       size="xs"
-                      onClick={() => selectActor(actor)}
+                      onClick={() => handleSelectVoice(actor)}
                       className="w-32"
                     >
                       Select voice
