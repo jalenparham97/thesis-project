@@ -1,4 +1,5 @@
-import { Box, Header, Title } from '@mantine/core';
+import { Box, Button, Header, Title } from '@mantine/core';
+import { NextLink } from '@mantine/next';
 
 export default function AppHeader() {
   return (
@@ -22,7 +23,15 @@ export default function AppHeader() {
             </span>
           </Title>
         </Box>
-        <Box className="flex items-center space-x-3"></Box>
+        <Box className="flex items-center space-x-3">
+          <Button
+            component={NextLink}
+            className="bg-[#009200] hover:bg-[#2a9a23]"
+            href="/pre-survey"
+          >
+            Take me to phase 1 pre-survey
+          </Button>
+        </Box>
       </Box>
     </Header>
   );

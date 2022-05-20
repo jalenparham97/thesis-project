@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Box, Button, Checkbox, Container } from '@mantine/core';
-import { NextLink } from '@mantine/next';
 import PageContainer from '@/components/layouts/PageContainer';
-import AppHeader from '@/components/shared/AppHeader';
 import Link from 'next/link';
+import SurveyHeader from '@/components/shared/SurveyHeader';
 
 export default function PreSurvey() {
   const [checked, setChecked] = useState(false);
@@ -11,7 +10,7 @@ export default function PreSurvey() {
   console.log(checked);
 
   return (
-    <PageContainer header={<AppHeader />}>
+    <PageContainer header={<SurveyHeader />}>
       <Container>
         <Box className="space-y-4">
           <Box>

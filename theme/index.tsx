@@ -21,7 +21,7 @@ export function ThemeProvider({ children }) {
     >
       <MantineProvider
         withNormalizeCSS
-        theme={{ colorScheme }}
+        theme={{ colorScheme, primaryColor: 'indigo' }}
         styles={{
           Button: (theme) => ({
             root: { ':disabled': { pointerEvents: 'none' } },

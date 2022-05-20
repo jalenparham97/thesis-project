@@ -1,6 +1,6 @@
-import { Box, Button, Header, Title } from '@mantine/core';
+import { Box, Header, Title } from '@mantine/core';
 
-export default function ListenPageHeader() {
+export default function SurveyHeader() {
   return (
     <Header
       height={60}
@@ -21,17 +21,6 @@ export default function ListenPageHeader() {
               Arizsia's 2022 Thesis Project
             </span>
           </Title>
-        </Box>
-        <Box className="flex items-center space-x-3">
-          <Button
-            className="bg-[#009200] hover:bg-[#2a9a23]"
-            component="a"
-            href="https://forms.gle/Da8aYZC5WEyK48886"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Take me to the post survey
-          </Button>
         </Box>
       </Box>
     </Header>

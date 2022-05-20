@@ -119,7 +119,29 @@ export default function ListenPage() {
             </Button>
           )}
           <Box className="flex items-center space-x-2">
+            <Button variant="default" onClick={() => setOpened(true)}>
+              {selectedActor ? 'Change voice' : 'Select a voice'}
+            </Button>
+          </Box>
+        </Group>
+      </Container>
+      <Container>
+        {selectedActor && (
+          <Box className="space-y-5 mt-10">
+            <Title className="text-center" order={1}>
+              PRESENCE BODY SCAN
+            </Title>
+            <Box
+              style={{ maxWidth: 550, marginLeft: 'auto', marginRight: 'auto' }}
+            >
+              <img
+                src="https://firebasestorage.googleapis.com/v0/b/affinity-voice.appspot.com/o/images%2Fzen-garden.jpg?alt=media&token=a085220b-d338-4705-9108-649bfc240a38"
+                alt="Random unsplash image"
+                className="aspect-square h-[500px] w-full rounded"
+              />
+            </Box>
             <NativeSelect
+              className="w-[150px] m-auto"
               placeholder="All Languages"
               name="languages"
               value={musicPreference}
@@ -129,27 +151,6 @@ export default function ListenPage() {
                 { value: 'music', label: 'With music' },
               ]}
             />
-            <Button variant="default" onClick={() => setOpened(true)}>
-              {selectedActor ? 'Change voice' : 'Select a voice'}
-            </Button>
-          </Box>
-        </Group>
-      </Container>
-      <Container>
-        {selectedActor && (
-          <Box className="space-y-10 mt-10">
-            <Title className="text-center" order={1}>
-              PRESENCE BODY SCAN
-            </Title>
-            <Box
-              style={{ maxWidth: 550, marginLeft: 'auto', marginRight: 'auto' }}
-            >
-              <img
-                src={selectedActor?.image || ''}
-                alt="Random unsplash image"
-                className="aspect-square h-[500px] w-full rounded"
-              />
-            </Box>
             <AudioPlayer
               style={{ borderRadius: '4px', textAlign: 'center' }}
               autoPlay={false}
@@ -172,7 +173,7 @@ export default function ListenPage() {
             <Title order={2}>
               Welcome to the Affinity Voice listening experiance
             </Title>
-            <Text>
+            <Text className="text-lg">
               To start listening press the select a voice button to begin.
             </Text>
             <Button variant="default" onClick={() => setOpened(true)}>

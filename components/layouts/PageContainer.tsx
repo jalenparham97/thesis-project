@@ -1,11 +1,12 @@
-import { AppShell } from '@mantine/core';
+import { AppShell, Box } from '@mantine/core';
 
 interface Props {
   children: React.ReactNode;
   header?: React.ReactElement<any, string | React.JSXElementConstructor<any>>;
+  className?: string;
 }
 
-export default function PageContainer({ children, header }: Props) {
+export default function PageContainer({ children, header, className }: Props) {
   return (
     <AppShell
       navbarOffsetBreakpoint="sm"
@@ -13,11 +14,11 @@ export default function PageContainer({ children, header }: Props) {
       header={header}
       styles={(theme) => ({
         main: {
-          paddingBottom: 50,
+          padding: '0px !important',
         },
       })}
     >
-      {children}
+      <Box className={`py-[100px] ${className}`}>{children}</Box>
     </AppShell>
   );
 }
