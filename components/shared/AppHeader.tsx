@@ -1,7 +1,10 @@
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { Box, Button, Header, Title } from '@mantine/core';
 import { NextLink } from '@mantine/next';
 
 export default function AppHeader() {
+  const isMobile = useIsMobile();
+
   return (
     <Header
       height={60}
@@ -16,7 +19,7 @@ export default function AppHeader() {
         <Box className="flex items-center space-x-5">
           <Title order={2} className="text-xl flex space-x-2">
             <span className="flex">
-              Affinity Voice<span className="hidden md:block">:</span>
+              Affinity <span className="hidden md:block ml-1"> Voice:</span>
             </span>
             <span className="hidden md:block">
               Arizsia's 2022 Thesis Project
@@ -29,7 +32,7 @@ export default function AppHeader() {
             className="bg-[#009200] hover:bg-[#2a9a23]"
             href="/pre-survey"
           >
-            Take me to phase 1 pre-survey
+            {isMobile ? 'Phase 1 pre-survey' : 'Take me to phase 1 pre-survey'}
           </Button>
         </Box>
       </Box>

@@ -1,6 +1,9 @@
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { Box, Button, Header, Title } from '@mantine/core';
 
 export default function ListenPageHeader() {
+  const isMobile = useIsMobile();
+
   return (
     <Header
       height={60}
@@ -15,7 +18,7 @@ export default function ListenPageHeader() {
         <Box className="flex items-center space-x-5">
           <Title order={2} className="text-xl flex space-x-2">
             <span className="flex">
-              Affinity Voice<span className="hidden md:block">:</span>
+              Affinity <span className="hidden md:block ml-1"> Voice:</span>
             </span>
             <span className="hidden md:block">
               Arizsia's 2022 Thesis Project
@@ -30,7 +33,7 @@ export default function ListenPageHeader() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Take me to the post survey
+            {isMobile ? 'Post-survey' : 'Take me to the post-survey'}
           </Button>
         </Box>
       </Box>
