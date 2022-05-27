@@ -164,6 +164,17 @@ export default function ListenPage() {
               showJumpControls={false}
               autoPlayAfterSrcChange={false}
               header={`Voice over by: ${selectedActor?.name}`}
+              footer={
+                <Button
+                  className="bg-[#009200] hover:bg-[#2a9a23]"
+                  component="a"
+                  href="https://forms.gle/Da8aYZC5WEyK48886"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {isMobile ? 'Post-survey' : 'Take me to the post-survey'}
+                </Button>
+              }
             />
           </Box>
         )}
